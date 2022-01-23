@@ -72,9 +72,10 @@ class LaratrustSeeder extends Seeder
                 $user = \App\Models\User::create([
                     'name' => ucwords(str_replace('_', ' ', $key)),
                     'email' => $key . '@e-learning.test',
-                    'phone' => $this->phones[rand(0,5)],
+                    'reg_no' => $this->phones[rand(0,5)],
+                    'level' => random_int(1, 5) * 100,
                     'password' => bcrypt('password'),
-                    'library_id' => strtoupper($key.'-' . 'first'),
+                    'department' => 'Computer Science',
                 ]);
                 $user->attachRole($role);
             }
