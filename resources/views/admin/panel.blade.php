@@ -4,10 +4,10 @@
 @endsection
 @section('content')
 {{-- top card section --}}
-@livewire('top-board')
+{{-- @livewire('top-board') --}}
 
 {{-- book lists --}}
 <section>
-  @livewire('all-books')
+  @livewire('lesson')
 </section>
 @endsection

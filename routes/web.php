@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Livewire\Live;
+use App\Http\Livewire\Lesson;
+use App\Http\Livewire\Student;
+use App\Http\Livewire\Attendance;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookController;
@@ -18,11 +22,11 @@ use App\Http\Controllers\BackendController;
 
 Route::get('/', function () {
     if (Auth::check()) {
-       if (auth()->user()->hasRole('librarian')) {
+       if (auth()->user()->hasRole('lecturer')) {
         return view('admin.panel');
        }
        else{
-        return view('books.library');
+        return redirect('/classes');
        }
     }
     return view('auth.login');
@@ -33,6 +37,8 @@ Route::view('contact-response', 'emails.contact-response');
 Route::view('contact-mail', 'emails.contact-form');
 
 
-Route::get('librarian', [BackendController::class, 'admin'])->name('librarian');
-Route::get('library', [BackendController::class, 'library'])->name('library')->middleware('role:student');
+Route::get('/students', Student::class)->name('students')->middleware('auth');
+Route::get('/attendance', Attendance::class)->name('attendance')->middleware('auth');
+Route::get('/classes', Lesson::class)->name('classes')->middleware('auth');
+Route::get('/live', Live::class)->name('live')->middleware('auth');
 Route::get('all-books', [BookController::class, 'index'])->name('admin.book')->middleware('role:librarian');

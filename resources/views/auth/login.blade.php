@@ -7,7 +7,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>Login - E-library</title>
+  <title>Login - E-learning</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;600;600;600;800&display=swap" rel="stylesheet" />
   <!-- Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
     <div class="flex-1 h-full max-w-md mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
       <div class="flex flex-col overflow-y-auto">
         <div class="h-32 md:h-auto -mb-6 pt-6" >
-          <h2 class="font-black text-center font-mono uppercase overflow-hidden">E-Library</h2>
+          <h2 class="font-black text-center font-mono uppercase overflow-hidden">E-Learning</h2>
           <img aria-hidden="true" class="object-cover w-28 mx-auto h-28  dark:hidden " src="/img/uniabuja.png" alt="Office" />
         </div>
         <div class="flex items-center justify-center pt-0 px-6 pb-6 sm:p-12 sm:pt-0">
@@ -34,9 +34,9 @@
             <form action="{{ route('login') }}" method="post">
               @csrf
               <label class="block text-sm">
-                <span class="text-gray-600 dark:text-gray-600">Library Id</span>
-                <input name="library_id" type="text" value="{{ old('library_id') }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-600 focus:border-green-600 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Jane Doe" />
-                @error('library_id')
+                <span class="text-gray-600 dark:text-gray-600">Email Address</span>
+                <input name="email" type="text" value="{{ old('email') }}" class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-600 focus:border-green-600 focus:outline-none focus:shadow-outline-green dark:text-gray-300 dark:focus:shadow-outline-gray form-input" placeholder="Jane Doe" />
+                @error('email')
                     <span class="text-sm text-red-600 font-normal">{{ $message }}</span>
                 @enderror
               </label>

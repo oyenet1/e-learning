@@ -14,7 +14,7 @@
 {{-- @livewire('top-board') --}}
 
 {{-- book lists --}}
-  @livewire('borrows')
+  {{-- @livewire('borrows') --}}
 @endsection
 
 {{-- javascripts --}}
