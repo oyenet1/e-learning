@@ -23,12 +23,14 @@ function returnDateTime($date)
   $date = date_format($date, 'H:ia, d M');
   return $date;
 }
+
 function startTime($date)
 {
   $date = date_create($date);
   $date = date_format($date, 'H:ia');
   return $date;
 }
+
 function endTime($date)
 {
   $date = date_create($date);
