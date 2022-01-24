@@ -60,12 +60,12 @@
         </tr>
       </thead>
       <tbody class="bg-white">
-        @for($i = 0; $i < 10; $i++) 
+        @foreach($lessons as $lesson) 
         <tr class="border">
-          <td class="p-2">{{ $i + 1 }}</td>
-          <td class="p-2">{{ \Faker\Factory::create()->name }}</td>
-          <td class="p-2">Mathematics</td>
-          <td class="p-2">33 jan, 2016</td>
+          <td class="p-2">{{ $loop->iteration }}</td>
+          <td class="p-2">{{ $lesson->user->name }}</td>
+          <td class="p-2">{{ $lesson->course }}</td>
+          <td class="p-2">{{ $lesson->date }}</td>
           <td class="p-2 flex place-items-center space-x-2">
             <a href="/staff" class="text-xs text-white px-2 py-1 rounded bg-red-500" data-toggle="tooltip" title="View staff full details" data-placement="top">
               3pm

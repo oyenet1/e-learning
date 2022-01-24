@@ -3,8 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Lessons;
-use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Illuminate\Support\Facades\Hash;
 
 class Lesson extends Component
 {
@@ -17,7 +18,6 @@ class Lesson extends Component
 
     // types of book
 
-    public $title, $author, $quantity, $cover, $isBind, $all,  $cid;
     public $show = false;
     public $update = false;
     public $modal = false;
@@ -36,21 +36,20 @@ class Lesson extends Component
     ];
 
     protected $rules = [
-        'title' => 'required',
-        'author' => 'required',
-        'quantity' => 'required|int|min:1|max:2000',
-        'cover' => 'nullable|url',
-        'isBind' => 'required|boolean'
+        'course' => 'required',
+        'date' => 'required',
+        'start' => 'required',
+        'end' => 'required',
+        'user_id' => 'nullable'
     ];
 
     // refreshinputs after saved
     function refreshInputs()
     {
-        $this->title = '';
-        $this->author = '';
-        $this->quantity = '';
-        $this->cover = '';
-        $this->isBind = '';
+        $this->course = '';
+        $this->start = '';
+        $this->end = '';
+        $this->date = '';
     }
 
     // show modal 
@@ -62,8 +61,8 @@ class Lesson extends Component
     public function save()
     {
         $data = $this->validate();
-        $saved = auth()->user()->create(array_merge($data, ['password' => Hash::make('password')]));
-
+        $saved = auth()->user()->lessons()->create($data);
+        // array_merge($data, ['password' => Hash::make('password')])
         $this->modal = false;
 
         if ($saved) {
@@ -79,6 +78,7 @@ class Lesson extends Component
     }
     public function render()
     {
-        return view('livewire.lesson')->layout('layouts.dashboard');
+        $lessons = Lesson::all();
+        return view('livewire.lesson', compact(['lessons']))->layout('layouts.dashboard');
     }
 }
