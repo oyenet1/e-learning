@@ -65,14 +65,14 @@
           <td class="p-2">{{ $loop->iteration }}</td>
           <td class="p-2">{{ $lesson->user->name }}</td>
           <td class="p-2">{{ $lesson->course }}</td>
-          <td class="p-2">{{ $lesson->date }}</td>
+          <td class="p-2">{{ formatDate($lesson->date) }}</td>
           <td class="p-2 flex place-items-center space-x-2">
             <a href="/staff" class="text-xs text-white px-2 py-1 rounded bg-red-500" data-toggle="tooltip" title="View staff full details" data-placement="top">
-              3pm
+             {{ startTime($lesson->start) }}
             </a>
             <span> - </span>
             <a href="/staff" class="text-xs text-white px-2 py-1 rounded bg-red-500" data-toggle="tooltip" title="View staff full details" data-placement="top">
-              5pm
+              {{ startTime($lesson->end) }}
             </a>
           </td>
           <td class="p-2">
@@ -81,7 +81,7 @@
             </a>
           </td>
           <td class="p-2">
-            <a href="/staff" class="text-xs text-white px-2 py-1 rounded bg-blue-500" data-toggle="tooltip" title="View staff full details" data-placement="top">
+            <a href="/live/{{ $lesson->course }}" class="text-xs text-white px-2 py-1 rounded bg-blue-500" data-toggle="tooltip" title="View staff full details" data-placement="top">
               Attend
             </a>
           </td>

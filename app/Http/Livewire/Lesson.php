@@ -78,7 +78,7 @@ class Lesson extends Component
     }
     public function render()
     {
-        $lessons = Lesson::all();
+        $lessons = Lessons::all();
         return view('livewire.lesson', compact(['lessons']))->layout('layouts.dashboard');
     }
 }

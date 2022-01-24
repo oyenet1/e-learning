@@ -40,5 +40,5 @@ Route::view('contact-mail', 'emails.contact-form');
 Route::get('/students', Student::class)->name('students')->middleware('auth');
 Route::get('/attendance', Attendance::class)->name('attendance')->middleware('auth');
 Route::get('/classes', Lesson::class)->name('classes')->middleware('auth');
-Route::get('/live', Live::class)->name('live')->middleware('auth');
+Route::get('/live/{lesson:course}', Live::class)->name('live')->middleware('auth');
 Route::get('all-books', [BookController::class, 'index'])->name('admin.book')->middleware('role:librarian');
